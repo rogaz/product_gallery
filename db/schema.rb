@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140519232314) do
+ActiveRecord::Schema.define(:version => 20140520025352) do
+
+  create_table "pictures", :force => true do |t|
+    t.integer  "product_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
+  add_index "pictures", ["product_id"], :name => "index_pictures_on_product_id"
 
   create_table "products", :force => true do |t|
     t.string   "description"

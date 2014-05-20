@@ -1,8 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Description:</b>
   <%= @product.description %>
+  <% @product.pictures.each do |picture| %>
+    <%= image_tag picture.attachment.url %>
+  <% end %>
 </p>
 
 

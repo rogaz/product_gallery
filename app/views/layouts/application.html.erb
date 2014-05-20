@@ -38,7 +38,16 @@
       </nav>
     </header>
     <div class="container-fluid">
+      <% flash.each do |key, msg| %>
+          <div class="alert alert-<%= key %> alert-dismissable auto-remove">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <p><%= msg %></p>
+          </div>
+      <% end %>
+      <div class="jumbotron">
+
         <%= yield %>
+      </div>
     </div>
 </body>
 </html>
