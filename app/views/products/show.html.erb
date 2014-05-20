@@ -1,11 +1,44 @@
+<!--
 <p>
   <b>Description:</b>
-  <%= @product.description %>
-  <% @product.pictures.each do |picture| %>
-    <%= image_tag picture.attachment.url %>
-  <% end %>
+  <%#= @product.description %>
+  <%# @product.pictures.each do |picture| %>
+    <%#= image_tag picture.attachment.url(:thumb) %>
+  <%# end %>
 </p>
 
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+-->
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% @product.pictures.each_with_index do |picture, index| %>
+        <li data-target="#myCarousel" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
+    <% end %>
+  </ol>
+  <div class="carousel-inner">
+    <% @product.pictures.each_with_index do |picture, index| %>
+        <div class="item <%= 'active' if index == 0 %>">
+          <%= image_tag picture.attachment.url(:medium) %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1><%= @product.description %></h1>
+              <!--<h1>Example headline.</h1>
+              <p>Note: If you're viewing this page via a <code>file://</code>
+                URL, the "next" and "previous" Glyphicon buttons on the left and right
+                might not load/display properly due to web browser security rules.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>-->
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div><!-- /.carousel -->
+

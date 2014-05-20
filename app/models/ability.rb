@@ -7,6 +7,7 @@ class Ability
       user ||= User.new # guest user (not logged in)
       if user.new_record?
         can :index, Product
+        can :show, Product
       else
         can :manage, :all
       end
