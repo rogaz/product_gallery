@@ -32,14 +32,24 @@
             <%= link_to product do %>
                 <%= image_tag product.pictures.first.attachment(:medium), class: 'img-circle', style: 'width: 140px; height: 140px' %>
             <% end %>
-        <% else %>
+        <% elsif can? :new, Picture %>
             <%= link_to '<i class="fa fa-cloud-upload fa-5x" style="width: 140px; height: 140px; text-align: center; padding: 30px 0px"></i>'.html_safe, new_picture_path(product_id: product.id), title: 'Cargue una imágen para el producto' %>
+        <% else %>
+           <i class="fa fa-ban fa-5x" title="Imágen no disponible" style="width: 140px; height: 140px; text-align: center; padding: 30px 0px"></i>
         <% end %>
         <h2><%= product.description %></h2>
-        <p><%= pluralize(product.pictures.count, 'imágen') %>. </p>
+        <p>
+          <%= pluralize(product.pictures.count, 'imágen') %>.
+          <% if can? :new, Picture %>
+              <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_picture_path(product_id: product.id), title: 'Cargue una imágen para el producto' %>
+          <% end %>
+        </p>
+
         <p><%= link_to 'Ver detalles >>', product, class: 'btn btn-default' %></p>
       </div><!-- /.col-lg-4 -->
   <% end %>
 </div>
 
-<%= link_to 'New Product', new_product_path %>
+<% if can? :new, Product %>
+    <%= link_to 'Crear producto', new_product_path %>
+<% end %>
