@@ -1,3 +1,6 @@
+<% content_for :asset_javascript do %>
+    <%= stylesheet_link_tag 'carousel' %>
+<% end %>
 <!--
 <p>
   <b>Description:</b>
@@ -24,7 +27,7 @@
   <div class="carousel-inner">
     <% @product.pictures.each_with_index do |picture, index| %>
         <div class="item <%= 'active' if index == 0 %>">
-          <%= image_tag picture.attachment.url(:medium) %>
+          <%= image_tag picture.attachment.url(:original) %>
           <div class="container">
             <div class="carousel-caption">
               <h1><%= @product.description %></h1>

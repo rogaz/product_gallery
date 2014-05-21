@@ -39,7 +39,7 @@
         <% end %>
         <h2><%= product.description %></h2>
         <p>
-          <%= pluralize(product.pictures.count, 'imágen') %>.
+          <%= pluralize(product.pictures.count, 'imágen') %>
           <% if can? :new, Picture %>
               <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_picture_path(product_id: product.id), title: 'Cargue una imágen para el producto' %>
           <% end %>
