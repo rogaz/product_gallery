@@ -54,7 +54,7 @@ module ProductGallery
     config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-    config.assets.precompile += %w( *.css *.js )
+    #config.assets.precompile += %w( *.css *.js )
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
